@@ -1,13 +1,9 @@
-# This is a basic workflow to help you get started with Actions
-
-name: AzureARMDeploy
+name: Deploy_Azure_Html_Resume
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
-  pull_request:
     branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -22,21 +18,29 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
       # Login to Azure
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout source code
-        uses: actions/checkout@v4
-
-      - name: Deploy ARM Template
+      - name: Upload to blob storage
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az deployment group create \
-            --name StorageAccountDeployment \
-            --resource-group rg-html-resume \
-            --template-file armtemplates/storageaccount.json \
-            --parameters storageAccountType=Standard_LRS
+            az storage blob upload-batch --account-name sahtmlresume --account-key ${{ secrets.AZURE_STORAGE_KEY }} --auth-mode key --overwrite -d '$web' -s ./frontend
+
+      - name: Purge CDN endpoint
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            az cdn endpoint purge --content-paths  "/*" --profile-name "htmlresume" --name "jchtmlresume" --resource-group "rg-html-resume"
+
+      # Azure logout
+      - name: logout
+        run: |
+              az logout
+        if: always()

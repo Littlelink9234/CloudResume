@@ -1,0 +1,178 @@
+/*@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+*/
+body {
+  width: 21cm;
+  height: 29.7cm;
+  background-color: #b3a6a6;
+  margin: 0 auto;
+  font-family: Roboto;
+}
+
+page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  position: relative;
+}
+
+page[size="A4"] {
+  width: 21cm;
+  height: 29.7cm;
+}
+
+@page {
+  size: 21cm 29.7cm;
+  margin: 0mm;
+}
+
+.page-container {
+  display: block;
+  height: 29.7cm;
+}
+
+.section-container {
+  display: inline-block;
+  margin-left: 0.5cm;
+  margin-right: 0.5cm;
+  margin-top: 0.7cm;
+  width: 20cm;
+  height: 28.3cm;
+  position: relative;
+}
+
+.name-contact-info-container {
+  display: flex;
+  flex-direction: row;
+  height: 1cm;
+  margin-bottom: 0.4cm;
+}
+
+.name {
+  width: 50%;
+}
+
+.name span {
+  font-size: 1cm;
+}
+
+.contact-info {
+  width: 50%;
+  text-align: right;
+}
+
+.title-description-container {
+  margin-bottom: 0.4cm;
+}
+
+.title {
+  margin-bottom: 0.3cm;
+}
+
+.summary {
+  font-size: 14px;
+}
+
+.tech-proficiency-container {
+  margin-bottom: 0.4cm;
+}
+
+table.technologies td {
+  font-size: 13px;
+}
+
+table.technologies td:nth-child(1) {
+  font-weight: bold;
+}
+
+.section-title {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.experience-container {
+  margin-bottom: 0.4cm;
+}
+
+.experience-container h3 {
+  margin-bottom: 0.1cm;
+}
+
+.job-container {
+  margin-bottom: 5px;
+}
+
+.company-dates {
+  display: flex;
+  flex-direction: row;
+}
+
+.company-name {
+  width: 60%;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.dates {
+  width: 40%;
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.job-title {
+  font-size: 14px;
+}
+
+ul.job-details-list {
+  margin: 0.2cm 0cm 0.2cm 0cm;
+  font-size: 14px;
+}
+
+ul.job-details-list li {
+  padding-bottom: 5px;
+}
+
+ul.job-details-list li:last-child {
+  padding-bottom: 0px;
+}
+
+.additional-experience-container {
+  margin-bottom: 0.4cm;
+}
+
+.additional-experience-card p {
+  font-size: 14px;
+}
+
+.additional-exp-title {
+  font-weight: bold;
+}
+
+.additional-experience-container > .additional-experience-card > p,
+.additional-experience-container > .additional-experience-card > h3,
+.additional-experience-container > .additional-experience-card > ul {
+  margin: 0.2cm 0cm 0.2cm 0cm;
+}
+
+.education-container,
+.education-container p {
+  margin: 0cm;
+  font-size: 14px;
+}
+
+.education-container > h3 {
+  margin-bottom: 0.2cm;
+}
+
+.cert-list {
+  padding: 0cm;
+  margin: 0cm;
+  list-style: none;
+  font-size: 14px;
+}
+
+.website-counter {
+  margin: 15px;
+  text-align: center;
+}
