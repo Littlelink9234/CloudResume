@@ -1,12 +1,17 @@
-var counterContainer = document.querySelector(".counter");
-var visitCount = localStorage.getItem("page_view");
+document.addEventListener("DOMContentLoaded", async function() {
+    var counterContainer = document.querySelector(".counter");
 
-if (visitCount) {
-    visitCount = Number(visitCount) + 1;
-    localStorage.setItem("page_view", visitCount);
-} else {
-    visitCount = 1;
-    localStorage.setItem("page_view", visitCount);
-}
+    try {
+        const response = await fetch(config.API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
 
-counterContainer.innerHTML = visitCount;
+        const data = await response.json();
+        counterContainer.innerHTML = `${data}`;
+    } catch (error) {
+        console.error("Error updating visitor count: ", error);
+    }
+});
