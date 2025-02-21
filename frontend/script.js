@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
     try {
         const response = await fetch(config.API_URL, {
-            method: "POST",
+            method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
